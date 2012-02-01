@@ -1,7 +1,7 @@
 Fancy Validate - JavaScript Form Validation
 =======================================
 
- * Source: http://code.google.com/p/fancyvalidate/
+ * Source: https://github.com/corminlu/fancyvalidate
  * License: MIT-License.txt
  * 邮件：<cormin.lu@gmail.com>
  * 压缩工具：使用UglifyJS (http://marijnhaverbeke.nl/uglifyjs)
