@@ -196,7 +196,8 @@
       key = this.getKey(element),
       messages = this.settings.messages[key],
       url = core.isString(param) ? param : param.url,
-      callback = param.callback || ajaxCallback;
+      callback = param.callback || ajaxCallback,
+      data = {};
 
     if (!messages)
       messages = this.settings.messages[key] = {};
@@ -207,9 +208,10 @@
     }
 
     messages["ajax"] = ajaxMessages.ing;
+    data[!core.isString(param) && param.key || key] = value;
 
     attr.ajax.request({
-      data: { key: value },
+      data: data,
       callback: function(text, status, xhr, error) {
         var result = status == 200 && callback(text),
           message = (messages["ajax"] = status == 200 ?
