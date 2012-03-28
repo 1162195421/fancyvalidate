@@ -1255,8 +1255,12 @@
     },
 
     hideErrors: function() {
-      this.errors.each(this.hideLabel, this);
-      this.valids.each(this.hideLabel, this);
+      //this.errors.each(this.hideLabel, this);
+      //this.valids.each(this.hideLabel, this);
+      var me = this;
+      $core.each(this.elements(), function(el) {
+        $dom.toggle(me.errorsFor(el), false);
+      });
     },
 
     elementCls: function(element, clsa, clsb) {
