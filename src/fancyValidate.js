@@ -331,6 +331,10 @@
     toggle: function(element, val) {
       element.style.display = !val ? "none" : "";
     },
+    
+    remove: function(element) {
+      element && element.parentNode && element.parentNode.removeChild(element);
+    },
 
     offset: function(el) {
       /*if ("getBoundingClientRect" in document.documentElement) {
@@ -1022,7 +1026,7 @@
   });
 
   $core.extend(true, $fancy.prototype, $validator.prototype, {
-    initForm: function(form) {
+    initForm: function() {
       this.time = +new Date();
       this.uuid = 0;
       this.uukey = "fancy_expando";
@@ -1122,15 +1126,31 @@
       return this.attrMap[element[this.uukey]];
     },
 
-    bindEvents: function() {
+    bindEvents: function(unload) {
+      var m = $event[unload ? "remove" : "add"];
       //click: radio/checkbox/select/option
       if (this.settings.interceptInput)
         $core.each("focusin focusout input keyup click".split(" "), function(evtName) {
-          $event.add(this.form, evtName, this.onInput());
+          m(this.form, evtName, this.onInput());
         }, this);
 
       if (this.settings.interceptSubmit)
-        $event.add(this.form, "submit", this.onSubmit());
+        m(this.form, "submit", this.onSubmit());
+    },
+    
+    unload: function() {
+      var me = this,
+        uukey = this.uukey,
+        cls = this.settings.validElCls + " " + this.settings.errorElCls;
+      $core.each(this.elements(), function(el) {
+        me.elementCls(el, "", cls);
+        $dom.remove(me.errorsFor(el));
+        delete el[uukey];
+      });
+      this.bindEvents(true);
+      this.reset();
+      this.attrMap = {};
+      this.uuid = 0;
     },
 
     onInput: function() {
@@ -1185,13 +1205,12 @@
           return false;
         }
 
-        if (sets.submitRandom) {
-          me.addRandom();
-        }
+        sets.submitRandom && me.addRandom();
+        sets.beforeSubmit && sets.beforeSubmit.call(me, me.form, evt);
 
         if (sets.submitHandler) {
           evt.stop();
-          sets.submitHandler.call(me, me.form);
+          sets.submitHandler.call(me, me.form, evt);
           return false;
         }
       };
