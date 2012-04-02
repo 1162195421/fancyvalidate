@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.1 - JavaScript Form Validation
+ * Fancy Validate v0.1.2 - JavaScript Form Validation
  * Copyright 2012 cormin.lu@gmail.com
  * MIT Licensed
- * Build 03/28/2012
+ * Build 02/04/2012
  */
 (function(window, undefined) {
   var document = window.document,
