@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.2 - JavaScript Form Validation
+ * Fancy Validate v0.1.3 - JavaScript Form Validation
  * Copyright 2012 cormin.lu@gmail.com
  * MIT Licensed
- * Build 04/02/2012
+ * Build 04/13/2012
  */
 (function(window, undefined) {
   var document = window.document,
@@ -1163,6 +1163,8 @@
 
         if ($dom.isoption(target))
           target = target.parentNode;
+        if (($dom.isselect(target) || $dom.isIradio(target) || $dom.isIcheckbox(target)) && (evt.type != "click" && evt.type != "keyup"))
+          return;
 
         attr = me.attr(target);
         if (attr && sets.rules[attr.key]) {
