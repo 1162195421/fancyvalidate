@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.3 - JavaScript Form Validation
+ * Fancy Validate v0.1.4 - JavaScript Form Validation
  * Copyright 2012 cormin.lu@gmail.com
  * MIT Licensed
- * Build 04/13/2012
+ * Build 04/20/2012
  */
 (function(window, undefined) {
   var document = window.document,
@@ -447,7 +447,7 @@
       return $dom.isElement(element) && element.nodeName.toLowerCase() === "input" && element.type === name;
     }
   });
-  $core.each("textarea select option label".split(" "), function(name) {
+  $core.each("input textarea select option label".split(" "), function(name) {
     $dom["is" + name] = function(element) {
       return $dom.isElement(element) && element.nodeName.toLowerCase() === name;
     }
@@ -922,7 +922,7 @@
       var key = $core.isString(obj) ? obj : this.getKey(obj),
         ret = [];
 
-      $core.each(this.form.elements, function(el) {
+      $core.each(this.formElements, function(el) {
         if (this.getKey(el) === key)
           ret.push(el);
       }, this);
@@ -1031,7 +1031,12 @@
       this.uuid = 0;
       this.uukey = "fancy_expando";
       this.attrMap = {};
-      $core.each(this.form.elements, this.parseRule, this);
+      this.formElements = [];
+      $core.each(this.form.elements, function(element) {
+        if ($dom.isinput(element) || $dom.isselect(element) || $dom.istextarea(element))
+          this.formElements.push(element);
+      }, this);
+      $core.each(this.formElements, this.parseRule, this);
 
       if (this.elements().length) {
         this.hideErrors();
