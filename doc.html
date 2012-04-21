@@ -732,7 +732,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
           $f.addMethod(name, fn, message)
         </td>
         <td class="tb">
-          添加自定义的验证规则；具体请参考<a href="exam-methods/rules.html">这里</a>
+          添加自定义的验证规则；具体请参考<a href="examples/exam-methods/rules.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -740,7 +740,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
           $f.addRegex(name, re, message)
         </td>
         <td class="tb">
-          添加自定义的正则表达式验证规则；具体请参考<a href="exam-methods/rules.html">这里</a>
+          添加自定义的正则表达式验证规则；具体请参考<a href="examples/exam-methods/rules.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -748,7 +748,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
           optional(element)
         </td>
         <td class="tb">
-          在添加自定义验证规则时用到，表示当前元素是否通过必填验证；具体请参考<a href="exam-methods/rules.html">这里</a>
+          在添加自定义验证规则时用到，表示当前元素是否通过必填验证；具体请参考<a href="examples/exam-methods/rules.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -756,7 +756,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
           parseRule(element, options)
         </td>
         <td class="tb">
-          手动添加元素及验证规则；具体请参考<a href="exam-rule/dynamicform.html">这里</a>
+          手动添加元素及验证规则；具体请参考<a href="examples/exam-rule/dynamicform.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -764,7 +764,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
           checkForm
         </td>
         <td class="tb">
-          手动触发验证；具体请参考<a href="exam-pos/messages.html">这里</a>
+          手动触发验证；具体请参考<a href="examples/exam-pos/messages.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -789,7 +789,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           查找规则的key相同的元素列表，可做为getList的参数；如：<pre>getList: $f.getListByKey</pre>
-          具体请参考<a href="exam-aspnet/volatile.aspx">这里</a>
+          具体请参考<a href="examples/exam-aspnet/volatile.aspx">这里</a>
         </td>
       </tr>
     </table>
@@ -827,7 +827,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           查找表单元素父节点的最后一个子节点，假如它是提示信息标签的话；如：<pre>findLabel: $f.findLast</pre>
-          具体见：<a href="exam-pos/lastchild.html">这里</a>
+          具体见：<a href="examples/exam-pos/lastchild.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -836,7 +836,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           作为表单元素父节点的最后一个子节点添加到页面上；如：<pre>appendLabel: $f.appendLast</pre>
-          具体见：<a href="exam-pos/lastchild.html">这里</a>
+          具体见：<a href="examples/exam-pos/lastchild.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -853,7 +853,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           把提示信息显示到指定的容器上，需要指定容器；如：<pre>findLabel: $f.findContainer, container: $f.dom.get("result")</pre>
-          具体见：<a href="exam-pos/container.html">这里</a>/<a href="exam-pos/container-rich.html">这里</a>
+          具体见：<a href="examples/exam-pos/container.html">这里</a>/<a href="examples/exam-pos/container-rich.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -862,7 +862,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           在容器中查找提示信息标签，需要指定容器，附加了top、left值，可使用绝对定位(absolute)；<pre>appendLabel: $f.appendContainer</pre>
-          具体见：<a href="exam-pos/container.html">这里</a>/<a href="exam-pos/container-rich.html">这里</a>
+          具体见：<a href="examples/exam-pos/container.html">这里</a>/<a href="examples/exam-pos/container-rich.html">这里</a>
         </td>
       </tr>
     </table>
@@ -884,7 +884,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           气泡提示框(有多种颜色样式)；使用它还需使用自定义的提示信息呈现函数$f.labelText；如：<pre>appendLabel: $f.bubbleTip, errorElement: "div", errorCls: "blue m4l3", labelText: $f.tipText</pre>
-          具体见：<a href="exam-tips/bubble.html">这里</a>
+          具体见：<a href="examples/exam-tips/bubble.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -893,7 +893,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           箭头提示框(有多种颜色样式)；使用它还需使用自定义的提示信息呈现函数$f.labelText；如：<pre>appendLabel: $f.arrowTip, errorElement: "div", errorCls: "orange m40", labelText: $f.tipText</pre>
-          具体见：<a href="exam-tips/arrow.html">这里</a>
+          具体见：<a href="examples/exam-tips/arrow.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -902,7 +902,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           文本框水印效果；如：<pre>$f.watermark(element, "输入点什么")</pre>
-          具体见：<a href="exam-rule/html5attr.html">这里</a>
+          具体见：<a href="examples/exam-rule/html5attr.html">这里</a>
         </td>
       </tr>
       <tr>
@@ -928,7 +928,7 @@ $f.dom.ready(<span style="color: blue;">function</span>()&nbsp;{
         </td>
         <td class="tb">
           获取asp.net控件的服务端id，可作为getKey的参数；如：<pre>getKey: $f.getKeyForAspnet</pre>
-          具体请参考<a href="exam-aspnet/volatile.aspx">这里</a>
+          具体请参考<a href="examples/exam-aspnet/volatile.aspx">这里</a>
         </td>
       </tr>
     </table>
