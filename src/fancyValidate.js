@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.4 - JavaScript Form Validation
+ * Fancy Validate v0.1.5 - JavaScript Form Validation
  * Copyright 2012 cormin.lu@gmail.com
  * MIT Licensed
- * Build 04/20/2012
+ * Build 04/21/2012
  */
 (function(window, undefined) {
   var document = window.document,
@@ -922,8 +922,8 @@
       var key = $core.isString(obj) ? obj : this.getKey(obj),
         ret = [];
 
-      $core.each(this.formElements, function(el) {
-        if (this.getKey(el) === key)
+      $core.each(this.form.elements, function(el) {
+        if (this.isValElement(el) && this.getKey(el) === key)
           ret.push(el);
       }, this);
       return ret;
@@ -1031,12 +1031,7 @@
       this.uuid = 0;
       this.uukey = "fancy_expando";
       this.attrMap = {};
-      this.formElements = [];
-      $core.each(this.form.elements, function(element) {
-        if ($dom.isinput(element) || $dom.isselect(element) || $dom.istextarea(element))
-          this.formElements.push(element);
-      }, this);
-      $core.each(this.formElements, this.parseRule, this);
+      $core.each(this.form.elements, this.parseRule, this);
 
       if (this.elements().length) {
         this.hideErrors();
@@ -1044,6 +1039,10 @@
         this.bindEvents();
       } else
         this.debug("no elements want to validate");
+    },
+    
+    isValElement: function(element) {
+      return $dom.isinput(element) || $dom.isselect(element) || $dom.istextarea(element);
     },
 
     getKey: function(element) {
@@ -1084,6 +1083,7 @@
     },
 
     parseRule: function(element) {
+      if (!this.isValElement(element)) return;
       var key = this.getKey(element),
         sets = this.settings,
         meta = $core.trim($dom.attr(element, sets.ruleAttr));
