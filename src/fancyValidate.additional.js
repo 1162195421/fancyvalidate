@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.1 - JavaScript Form Validation
+ * Fancy Validate v0.1.2 - JavaScript Form Validation
  * Copyright 2012 cormin.lu@gmail.com
  * MIT Licensed
- * Build 02/13/2012
+ * Build 05/05/2012
  */
 (function($f) {
   var core = $f.core,
@@ -299,6 +299,7 @@
       $f.appendContainer.call(this, label, element);
       label.innerHTML = '<span class="b-cor b-cor10 e-b-bot"></span><span class="b-cor b-cor10 e-b-top"></span><p class="b-con"></p>';
       label.textNode = label.childNodes[2];
+      label.vtarget = element;
     },
 
     arrowTip: function(label, element) {
@@ -306,10 +307,12 @@
       $f.appendContainer.call(this, label, element);
       label.innerHTML = '<span class="b-cor b-cor15"></span><p class="b-con"></p>';
       label.textNode = label.childNodes[1];
+      label.vtarget = element;
     },
 
     tipText: function(label, message) {
       label.textNode.innerHTML = message;
+      $f.appendContainer.call(this, label, label.vtarget);
     },
 
     prototype: {
