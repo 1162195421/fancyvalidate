@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.5 - JavaScript Form Validation
+ * Fancy Validate v0.1.6 - JavaScript Form Validation
  * Copyright 2012 cormin.lu@gmail.com
  * MIT Licensed
- * Build 04/21/2012
+ * Build 05/07/2012
  */
 (function(window, undefined) {
   var document = window.document,
@@ -618,8 +618,7 @@
 
       compareTo: function(value, element, param) {
         var target = this.getElement(param);
-        return (this.optional(element) && this.optional(target)) ||
-          (target && value == this.getValue(target));
+        return target && value == this.getValue(target);
       },
 
       pattern: function(value, element, param) {
