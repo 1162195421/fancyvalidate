@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.6 - JavaScript Form Validation
+ * Fancy Validate v0.1.7 - JavaScript Form Validation
  * Copyright 2012 cormin.lu@gmail.com
  * MIT Licensed
- * Build 05/07/2012
+ * Build 10/09/2012
  */
 (function(window, undefined) {
   var document = window.document,
@@ -970,7 +970,7 @@
         var rules = {};
         $core.each("required min max pattern".split(" "), function(name) {
           var attr = $dom.attr(element, name);
-          if (attr != undefined && attr != null)
+          if ((name == "required" && attr != undefined && attr != null) || attr)
             rules[name] = $core.isNumeric(attr) ? parseFloat(attr) : attr || 1;
         });
 
