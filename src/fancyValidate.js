@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.7 - JavaScript Form Validation
+ * Fancy Validate v0.1.8 - JavaScript Form Validation
  * Copyright 2012 cormin.lu@gmail.com
  * MIT Licensed
- * Build 10/09/2012
+ * Build 10/27/2012
  */
 (function(window, undefined) {
   var document = window.document,
@@ -965,20 +965,6 @@
       };
     })(),
 
-    parseAttr5: function(element) {
-      if (!$core.isBoolean(element.required)) {
-        var rules = {};
-        $core.each("required min max pattern".split(" "), function(name) {
-          var attr = $dom.attr(element, name);
-          if ((name == "required" && attr != undefined && attr != null) || attr)
-            rules[name] = $core.isNumeric(attr) ? parseFloat(attr) : attr || 1;
-        });
-
-        if (!$core.isEmptyObject(rules))
-          return { rules: rules };
-      }
-    },
-
     ruleToAttr: function(element, rules) {
       var len = rules["maxlength"] || rules["rangelength"];
       if (len && (element.maxLength == -1 || element.maxLength == 2147483647)) {
@@ -1087,7 +1073,7 @@
         sets = this.settings,
         meta = $core.trim($dom.attr(element, sets.ruleAttr));
 
-      if (key && this.register(element, $fancy.parseAttr5(element), $fancy.parseAttr(meta))) {
+      if (key && this.register(element, $fancy.parseAttr(meta))) {
         $fancy.ruleToAttr(element, sets.rules[key]);
         var attr = this.attr(element);
         if (!attr) {
