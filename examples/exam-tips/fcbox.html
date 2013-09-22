@@ -31,6 +31,7 @@
         $f.appendContainer.call(this, label, elem);
         label.innerHTML = '<table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td class="tl"></td><td class="t"></td><td class="tr"></td></tr><tr><td class="l"></td><td class="c"><div class="err"><p></p></div><a class="close"></a></td><td class="r"></td></tr><tr><td class="bl"></td><td class="b"></td><td class="br"></td></tr></tbody></table>';
         label.textNode = label.getElementsByTagName("p")[0];
+        label.vtarget = elem;
         var ac = label.getElementsByTagName("a")[0];
         $f.event.add(ac, "click", function() {
           $f.dom.toggle(label);
