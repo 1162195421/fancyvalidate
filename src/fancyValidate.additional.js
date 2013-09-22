@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.3 - JavaScript Form Validation
+ * Fancy Validate Additional v0.1.4 - JavaScript Form Validation
  * Copyright 2013 cormin.lu@gmail.com
  * MIT Licensed
- * Build 07/10/2013
+ * Build 09/22/2013
  */
 (function($f) {
   var core = $f.core,
@@ -194,6 +194,9 @@
   };
 
   $f.addMethod("ajax", function(value, element, param) {
+    if (this.optional(element) && !value)
+      return true;
+
     var me = this,
       attr = this.attr(element),
       key = this.getKey(element),
