@@ -1,8 +1,8 @@
 /*!
- * Fancy Validate v0.1.8 - JavaScript Form Validation
- * Copyright 2012 cormin.lu@gmail.com
+ * Fancy Validate v0.1.9 - JavaScript Form Validation
+ * Copyright 2013 cormin.lu@gmail.com
  * MIT Licensed
- * Build 10/27/2012
+ * Build 09/22/2013
  */
 (function(window, undefined) {
   var document = window.document,
@@ -680,9 +680,9 @@
     addMethod: function(name, fn, message) {
       if (!$core.isFunction(fn))
         $core.error("method is not a function " + fn);
-      $validator.methods[name] = fn;
+      this.methods[name] = fn;
       if (message)
-        $validator.messages[name] = message;
+        this.messages[name] = message;
     },
 
     patterns: {},
@@ -690,9 +690,10 @@
     addPattern: function(name, re, message) {
       if (!$core.isRegExp(re))
         $core.error("argument is not a regular expression " + re);
-      $validator.patterns[name] = re;
-      $validator.addMethod(name, function(value, element, param) {
-        return this.optional(element) || $validator.patterns[name].test(value);
+      var me = this;
+      me.patterns[name] = re;
+      me.addMethod(name, function(value, element, param) {
+        return this.optional(element) || me.patterns[name].test(value);
       }, message);
     },
 
@@ -735,7 +736,7 @@
       },
 
       optional: function(element) {
-        return !$validator.methods.required.call(this,
+        return !this.constructor.methods.required.call(this,
           this.getValue(element), element) &&
             this.mismatch;
       },
@@ -784,7 +785,7 @@
 
         for (method in rules) {
           parameters = rules[method];
-          fn = $validator.methods[method];
+          fn = this.constructor.methods[method];
           if (!fn) $core.error("method " + method + " not found");
 
           try {
@@ -833,7 +834,7 @@
         var name = this.getKey(element);
         return this.customMessage(name, method) ||
           element.title ||
-          $validator.messages[method] ||
+          this.constructor.messages[method] ||
           "<strong>Warning: No message defined for " + name + "</strong>";
       },
 
